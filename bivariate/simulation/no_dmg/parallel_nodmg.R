@@ -15,10 +15,9 @@ rho <- 0.7
 N <- 87
 
 
-#alpha <- c(.1,.15,.2,10,15,20) 
 alpha <- rep(0,6)
 # eta is thresh 
-eta <- 0.6
+eta <- 0.7
 
 theta0 <- c(mu,sigma,rho,eta,alpha)
 
@@ -87,11 +86,3 @@ for (icov in 1:dim(coverage)[1]){
 }
 colMeans(coverage)
 
-
-# 
-# colMeans(theta_sd)
-# expit(colMeans(theta_est)[5])
-# 
-# upper <- colMeans(theta_est)[5]+ 1.96*colMeans(theta_sd)[5]
-# lower <-colMeans(theta_est)[5] - 1.96*colMeans(theta_sd)[5]
-# (expit(upper) - expit(lower))/(2*1.96)

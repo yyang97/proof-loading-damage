@@ -13,15 +13,12 @@ rho <- 0.7
 
 
 N <- 87
-#N <- 87*3
 
-#alpha <- c(.1,.15,.2,10,15,20) 
 alpha <- c(1,1.5,2,1,1.5,2) 
 
 # eta is thresh 
 eta <- 0.7
 
-theta0 <- c(mu,sigma,rho,alpha)
 
 ##------proof loading-----####
 
@@ -83,7 +80,7 @@ tryCatch({
   print(paste("An error occurred in iteration", ii, ":", e$message))
   rep(0,2*length(theta_init))
   })
-
+}
 
 N_params <- dim(param_res)[2]/2
 theta_est <- param_res[,1:N_params]

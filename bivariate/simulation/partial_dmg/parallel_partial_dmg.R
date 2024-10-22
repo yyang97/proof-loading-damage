@@ -16,10 +16,10 @@ N <- 87
 
 
 #alpha <- c(.1,.15,.2,10,15,20) 
-alpha <- c(1,0,2,0,1.5,0) 
+alpha <- c(1,0,2,0,1.5,2) 
 
 # eta is thresh 
-eta <- 0.6
+eta <- 0.7
 
 theta0 <- c(mu,sigma,rho,alpha)
 
@@ -60,7 +60,7 @@ tryCatch({
 optimresult <- optim(theta_init,
                      nlogpost_full,
                      data = data)
-# 
+#
 hess = numDeriv::hessian(nlogpost_full,optimresult$par,
                          method.args=list(r = 4),
                          data = data)
@@ -73,21 +73,6 @@ c(theta_est,theta_sd)
   print(paste("An error occurred in iteration", ii, ":", e$message))
   rep(0,2*length(theta_init))
 })
-
-
-# eta_est <- optimresult$par[6]
-# optimresult <- optim( optimresult$par[-6],nlogpost_full_fixeta,
-#                      data = data,eta= eta_est)
-# 
-# hess = numDeriv::hessian(nlogpost_full_fixeta,optimresult$par,
-#                          method.args=list(r = 4),
-#                          data = data,eta = eta_est)
-
-
-
-# signif(cbind(theta_init,theta_est,theta_sd, 
-#              theta_est - 1.96 * theta_sd,
-#              theta_est + 1.96 * theta_sd),3)
 }
 
 N_params <- dim(param_res)[2]/2
@@ -104,17 +89,3 @@ for (icov in 1:dim(coverage)[1]){
     (theta_init - lower[icov,] > 0)
 }
 print(colMeans(coverage))
-#saveRDS(param_res,file = "partial_dmg.rds")
-
-#rbind(theta_init,colMeans(theta_est))
-# 
-# colMeans(theta_est)
-# 
-# colMeans(theta_sd)
-# # expit(colMeans(theta_est)[5])
-# # 
-# upper <- colMeans(theta_est)[6]+ 1.96*colMeans(theta_sd)[6]
-# lower <-colMeans(theta_est)[6] - 1.96*colMeans(theta_sd)[6]
-# (expit(upper) - expit(lower))/(2*1.96)
-
-
