@@ -39,7 +39,7 @@ sigma <- c(12.92,1.08)
 rho <- 0.7
 
 
-N <- 87
+N <- 100000
 eta <- 0.7
 alpha <- 0
 theta0 <- c(mu,sigma,rho,alpha)
@@ -60,7 +60,8 @@ set.seed(4)
 R20_nodmg<- pl_gen(mu,sigma,rho,eta,0,l,N)
 R20_dmg<- pl_gen(mu,sigma,rho,eta,1,l,N)
 p1 <- density(data_to_plot(R20_nodmg))     
-p2 <- density(data_to_plot(R20_dmg))  
+dmg_data <- data_to_plot(dmg)
+p2 <- density(dmg_data[dmg_data>0])  
 xlim_range <- range(c(p1$x, p2$x))
 ylim_range <- range(c(p1$y, p2$y))
 plot( p1, col=col_nodmg , 
@@ -78,15 +79,14 @@ nodmg <- pl_gen(c(mu[2],mu[1]),c(sigma[2],sigma[1]),
 dmg <- pl_gen(c(mu[2],mu[1]),c(sigma[2],sigma[1]),
               rho,eta,1,l,N)
 p1 <- density(data_to_plot(nodmg))     
-p2 <- density(data_to_plot(dmg))  
+dmg_data <- data_to_plot(dmg)
+p2 <- density(dmg_data[dmg_data>0])   
 xlim_range <- range(c(p1$x, p2$x))
 ylim_range <- range(c(p1$y, p2$y))
 plot( p1, col=col_nodmg , 
       xlim = xlim_range, ylim = ylim_range,
       main = "T20: Density plot ",xlab = "")  # first histogram
 lines( p2, col=col_dmg )  # second
-# legend("topright", legend = c("nodmg", "dmg"),
-#        col = c(col_nodmg, col_dmg ),pch = 15, pt.cex = 2, bty = "n")
 
 
 # R40
@@ -94,15 +94,14 @@ l <- R_pf[2]
 R40_nodmg<- pl_gen(mu,sigma,rho,eta,0,l,N)
 R40_dmg<- pl_gen(mu,sigma,rho,eta,1.5,l,N)
 p1 <- density(data_to_plot(R40_nodmg))     
-p2 <- density(data_to_plot(R40_dmg))  
+dmg_data <- data_to_plot(dmg)
+p2 <- density(dmg_data[dmg_data>0]) 
 xlim_range <- range(c(p1$x, p2$x))
 ylim_range <- range(c(p1$y, p2$y))
 plot( p1, col=col_nodmg , 
       xlim = xlim_range, ylim = ylim_range,
       main = "R40: Density plot ",xlab = "")  # first histogram
 lines( p2, col=col_dmg )  # second
-# legend("topright", legend = c("nodmg", "dmg"),
-#        col = c(col_nodmg, col_dmg ),pch = 15, pt.cex = 2, bty = "n")
 
 
 
@@ -115,16 +114,15 @@ nodmg <- pl_gen(c(mu[2],mu[1]),c(sigma[2],sigma[1]),
                 rho,eta,0,l,N)
 dmg <- pl_gen(c(mu[2],mu[1]),c(sigma[2],sigma[1]),
               rho,eta,1,l,N)
-p1 <- density(data_to_plot(nodmg))     
-p2 <- density(data_to_plot(dmg))  
+p1 <- density(data_to_plot(nodmg)) 
+dmg_data <- data_to_plot(dmg)
+p2 <- density(dmg_data[dmg_data>0])  
 xlim_range <- range(c(p1$x, p2$x))
 ylim_range <- range(c(p1$y, p2$y))
 plot( p1, col=col_nodmg , 
       xlim = xlim_range, ylim = ylim_range,
       main = "T40: Density plot ",xlab = "")  # first histogram
 lines( p2, col=col_dmg )  # second
-# legend("topright", legend = c("nodmg", "dmg"),
-#        col = c(col_nodmg, col_dmg ),pch = 15, pt.cex = 2, bty = "n")
 
 
 # R60
@@ -132,15 +130,14 @@ l <- R_pf[3]
 R60_nodmg<- pl_gen(mu,sigma,rho,eta,0,l,N)
 R60_dmg<- pl_gen(mu,sigma,rho,eta,2,l,N)
 p1 <- density(data_to_plot(R60_nodmg))     
-p2 <- density(data_to_plot(R60_dmg))  
+dmg_data <- data_to_plot(dmg)
+p2 <- density(dmg_data[dmg_data>0])  
 xlim_range <- range(c(p1$x, p2$x))
 ylim_range <- range(c(p1$y, p2$y))
 plot( p1, col=col_nodmg , 
       xlim = xlim_range, ylim = ylim_range,
       main = "R60: Density plot ",xlab = "")  # first histogram
 lines( p2, col=col_dmg )  # second
-# legend("topright", legend = c("nodmg", "dmg"),
-#        col = c(col_nodmg, col_dmg ),pch = 15, pt.cex = 2, bty = "n")
 
 
 # T60
@@ -150,15 +147,14 @@ nodmg <- pl_gen(c(mu[2],mu[1]),c(sigma[2],sigma[1]),
 dmg <- pl_gen(c(mu[2],mu[1]),c(sigma[2],sigma[1]),
               rho,eta,1,l,N)
 p1 <- density(data_to_plot(nodmg))     
-p2 <- density(data_to_plot(dmg))  
+dmg_data <- data_to_plot(dmg)
+p2 <- density(dmg_data[dmg_data>0])  
 xlim_range <- range(c(p1$x, p2$x))
 ylim_range <- range(c(p1$y, p2$y))
 plot( p1, col=col_nodmg , 
       xlim = xlim_range, ylim = ylim_range,
       main = "T60: Density plot ",xlab = "")  # first histogram
 lines( p2, col=col_dmg )  # second
-# legend("topright", legend = c("nodmg", "dmg"),
-#        col = c(col_nodmg, col_dmg ),pch = 15, pt.cex = 2, bty = "n")
 
 # Add a common legend at the bottom of all plots
 par(fig = c(0, 1, 0, 0.1), oma = c(0, 0, 0, 0), new = TRUE)  # Use the lower part of the figure space for the legend

@@ -6,8 +6,8 @@ doParallel::registerDoParallel(cores=80)
 source("sub_func.R")
 
 
-mu <- c(45.13,5.51)
-sigma <- c(12.92,1.08)
+mu <- c(45,5.5)
+sigma <- c(13,1)
 
 rho <- 0.7
 
