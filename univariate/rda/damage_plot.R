@@ -72,7 +72,7 @@ y_obs$group3 <- group23_star[which(group23_star > l)]
 
 
 myqq(R5R100 ,y_obs$group3,xlab = "empirical quantile",
-     ylab = "predicted quantile",
+     ylab = "simulated quantile",
      main = bquote("R5_4Y: Q-Q plot (" * hat(alpha) == 0 * ")"))
 
 
@@ -106,7 +106,7 @@ y_obs$group3 <- group23_star[which(group23_star > l)]
 
 
 myqq(R20_4Y_R100,y_obs$group3,xlab = "empirical quantile",
-     ylab = "predicted quantile",
+     ylab = "simulated quantile",
      main = bquote("R20_4Y: Q-Q plot (" * hat(alpha) == 0 * ")"))
 ####---------------------- R20_1Y------------------
 alpha <-  4.908
@@ -136,7 +136,7 @@ y_obs$group3 <- group23_star[which(group23_star > l)]
 
 
 myqq(R20R100,y_obs$group3,xlab = "empirical quantile",
-     ylab = "predicted quantile",
+     ylab = "simulated quantile",
      main = bquote("R20_1Y: Q-Q plot (" * hat(alpha) == 4.908 * ")"))
 
 ####---------------------- R5_4Y------------------
@@ -167,7 +167,7 @@ y_obs$group3 <- group23_star[which(group23_star > l)]
 
 
 myqq(R20R100 ,y_obs$group3,xlab = "empirical quantile",
-     ylab = "predicted quantile",
+     ylab = "simulated quantile",
      main = bquote("R20_1Y: Q-Q plot (" * alpha == 0 * ")"))
 
 par(mfrow = c(1, 1))

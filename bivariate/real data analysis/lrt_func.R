@@ -89,10 +89,7 @@ nlogpost_plot <- function(theta){
 }
 
 
-R100_data <- rnorm(2*N,mean = mu[1],sd = sigma[1])
-T100_data <- rnorm(2*N,mean = mu[2],sd = sigma[2])
 
-shoulder_group <- list(R100_data,T100_data)
 alpha_checkR <- function(theta,R_group,T_group,
                           R_pl,T_pl,shoulder_group){
   mu <- theta[1:2]
@@ -201,16 +198,17 @@ single_alpha0 <- function(theta,group,group_pl,
 
 llr_sim <- function(group,shoulder_group,
                     group_pl,group_name ){
-  optim_checkR <- optim(theta0[1:5],single_alpha0,
+  theta_init <- c(44.8484,  5.3332, 12.8166,  1.1166,  1.1625)
+  optim_checkR <- optim(theta_init,single_alpha0,
                         group = group,group_pl = group_pl,
                         group_name = group_name,
                         shoulder_group = shoulder_group)
   
   llr_checkR <- 2*optim_checkR$value
   
-  optimout <- optim(theta0,single_fitalpha,
+  optimout <- optim(c(theta_init,0.8,0),single_fitalpha,
                     method = "L-BFGS-B",
-                    lower = c(30,0.1,0.1,0.1,0.03,0.03,-2),
+                    lower = c(30,0.1,0.1,0.1,0.03,0.03,-10),
                     upper = c(70,40,30,10,0.97,0.97,10),
                     group = group,group_pl = group_pl,
                     group_name = group_name,

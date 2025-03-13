@@ -1,3 +1,4 @@
+# this file generates the Q-Q plots for the six proof-loading groups
 library(ggplot2)
 library(gridExtra)
 
@@ -51,7 +52,7 @@ eta <- 1
 alpha <- 0
 theta0 <- c(mu,sigma,rho,alpha)
 
-pdf("qqplots_combined.pdf", width = 8.27, height = 11.69)  # A4 size in inches
+pdf("bivariate_qqplot.pdf", width = 8.27, height = 11.69)  # A4 size in inches
 par(mfrow = c(3, 2))
 # R20
 l <- R_pf[1]
@@ -59,54 +60,59 @@ set.seed(4)
 R20_fit <- pl_gen(mu,sigma,rho,eta,alpha,l,N)
 p1 <- myqq(data_to_plot(R20_data),data_to_plot(R20_fit),
      xlab = "empirical quantile",
-     ylab = "predicted quantile",
+     ylab = "simulated quantile",
      main = "R20: Q-Q plot")
 
 # R40
 l <- R_pf[2]
+set.seed(16)
 R40_fit <- pl_gen(mu,sigma,rho,eta,alpha,l,N)
 p2 <- myqq(data_to_plot(R40_data),data_to_plot(R40_fit),
      xlab = "empirical quantile",
-     ylab = "predicted quantile",
+     ylab = "simulated quantile",
      main = "R40: Q-Q plot")
 
 # R60
 l <- R_pf[3]
+set.seed(9)
 R60_fit <- pl_gen(mu,sigma,rho,eta,alpha,l,N)
 p3 <- myqq(data_to_plot(R60_data),data_to_plot(R60_fit),
            xlab = "empirical quantile",
-           ylab = "predicted quantile",
+           ylab = "simulated quantile",
            main = "R60: Q-Q plot")
 
 
 # T20
 l <- T_pf[1]
+set.seed(9)
 T20_fit <- pl_gen(c(mu[2],mu[1]),c(sigma[2],sigma[1]),
                   rho,eta,alpha,l,N)
 p4 <- myqq(data_to_plot(T20_data),data_to_plot(T20_fit),
      xlab = "empirical quantile",
-     ylab = "predicted quantile",
+     ylab = "simulated quantile",
      main = "T20: Q-Q plot")
 
 
 # T40
 l <- T_pf[2]
+set.seed(17)
 T40_fit <- pl_gen(c(mu[2],mu[1]),c(sigma[2],sigma[1]),
                   rho,eta,alpha,l,N)
 p5 <- myqq(data_to_plot(T40_data),data_to_plot(T40_fit),
      xlab = "empirical quantile",
-     ylab = "predicted quantile",
+     ylab = "simulated quantile",
      main = "T40: Q-Q plot")
 
 
 
 # T60
 l <- T_pf[3]
+set.seed(7)
 T60_fit <- pl_gen(c(mu[2],mu[1]),c(sigma[2],sigma[1]),
                   rho,eta,alpha,l,N)
 p6 <- myqq(data_to_plot(T60_data),data_to_plot(T60_fit),
      xlab = "empirical quantile",
-     ylab = "predicted quantile",
+     ylab = "simulated quantile",
      main = "T60: Q-Q plot")
 par(mfrow = c(1, 1))
 

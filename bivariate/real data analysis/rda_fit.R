@@ -1,3 +1,5 @@
+# For the bivariate real data analysis, 
+# this file conducts the parameter inference for the proposed damage model
 library(ggplot2)
 
 source("real_data_preprocessing.R")
